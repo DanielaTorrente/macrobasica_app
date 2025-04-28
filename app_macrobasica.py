@@ -24,7 +24,7 @@ authenticator = stauth.Authenticate(
 )
 
 # Login corregido
-name, authentication_status, username = authenticator.login(
+name, authentication_status = authenticator.login(
     location='main',
     fields={'Form name': 'Login', 'Username': 'Username', 'Password': 'Password'}
 )
@@ -40,7 +40,7 @@ if authentication_status:
         st.title("Cátedra de Macro Básica")
         st.write("Bienvenida a la plataforma colaborativa de la Cátedra.")
         st.info("✨ Próxima reunión: 12 de mayo")
-        
+
     elif choice == "Minutas y Planificación":
         st.title("Minutas de Reunión y Planificación")
         st.write("Aquí se cargarán las actas de reuniones y documentos de trabajo.")
