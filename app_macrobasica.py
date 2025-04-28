@@ -42,8 +42,19 @@ if st.session_state["authentication_status"]:
         st.write("Bienvenida a la plataforma colaborativa de la Cátedra.")
 
     elif choice == "Minutas y Planificación":
-        st.title("Minutas de Reunión y Planificación")
-        st.write("Aquí se cargarán las actas de reuniones y documentos de trabajo.")
+    st.title("Minutas de Reunión y Planificación")
+
+    st.write("A continuación, podés acceder a las minutas de reuniones de la cátedra:")
+
+    base_url = "https://github.com/DanielaTorrente/macrobasica_app/raw/main/minutas/"
+
+    minutas = {
+        "Reunión 28 de abril de 2025": "Minuta_Reunion_Abril28.docx",
+    }
+
+    for nombre, archivo in minutas.items():
+        st.markdown(f"[📄 {nombre}]({base_url}{archivo})")
+
 
     elif choice == "Actividades Docentes":
         st.title("Actividades Asignadas a Docentes")
