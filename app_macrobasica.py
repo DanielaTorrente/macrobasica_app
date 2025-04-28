@@ -1,16 +1,16 @@
 import streamlit as st
 import streamlit_authenticator as stauth
 
-# Configuración de usuarios (con contraseñas hasheadas)
+# Configuración de usuarios (con contraseñas en texto plano)
 credentials = {
     "usernames": {
         "dtorrente": {
             "name": "Daniela Torrente",
-            "password": "$2b$12$8Sk9g1O./B7Vh4ZwQMY5..8Vx3YzAFDh5U51iwmPCA9IAoHgUydlG"
+            "password": "macro2025"
         },
         "profesor1": {
             "name": "Profesor/a 1",
-            "password": "$2b$12$8Sk9g1O./B7Vh4ZwQMY5..8Vx3YzAFDh5U51iwmPCA9IAoHgUydlG"
+            "password": "macro2025"
         }
     }
 }
@@ -20,8 +20,7 @@ authenticator = stauth.Authenticate(
     credentials=credentials,
     cookie_name="macrobasica_app",
     key="abcdef",
-    cookie_expiry_days=1,
-    preauthorized=True  # <- Agregado para que funcione correctamente
+    cookie_expiry_days=1
 )
 
 # Login
