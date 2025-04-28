@@ -1,3 +1,5 @@
+import streamlit as st
+
 menu = ["Inicio", "Minutas y Planificación", "Actividades Docentes", "Actividades Estudiantes", "Seguimiento de Avances", "Contacto Interno"]
 choice = st.sidebar.radio("Ir a:", menu)
 
