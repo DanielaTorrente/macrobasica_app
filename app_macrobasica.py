@@ -1,29 +1,28 @@
 
 import streamlit as st
-from streamlit_authenticator import Authenticate
+import streamlit_authenticator as stauth
 
-# -------------------
-# Configurar usuarios
-# -------------------
-users = {
-    "dtorrente": {
-        "name": "Daniela Torrente",
-        "password": "macro2025"
-    },
-    "profesor1": {
-        "name": "Profesor/a 1",
-        "password": "macro2025"
+# Configuración de usuarios
+credentials = {
+    "usernames": {
+        "dtorrente": {
+            "name": "Daniela Torrente",
+            "password": stauth.Hasher(["macro2025"]).generate()[0]
+        },
+        "profesor1": {
+            "name": "Profesor/a 1",
+            "password": stauth.Hasher(["macro2025"]).generate()[0]
+        }
     }
 }
 
-# Crear listas de nombres de usuarios y contraseñas
-names = [user["name"] for user in users.values()]
-usernames = list(users.keys())
-passwords = [user["password"] for user in users.values()]
-
-# Crear autenticador
-authenticator = Authenticate(names, usernames, passwords,
-                              "macrobasica_app", "abcdef", cookie_expiry_days=1)
+# Crear el autenticador
+authenticator = stauth.Authenticate(
+    credentials,
+    "macrobasica_app",
+    "abcdef",
+    cookie_expiry_days=1
+)
 
 # Login
 name, authentication_status, username = authenticator.login('Login', 'main')
@@ -32,36 +31,21 @@ if authentication_status:
     authenticator.logout('Logout', 'sidebar')
     st.sidebar.title(f"Bienvenido/a, {name}")
 
-    # -----------------
-    # Menú lateral
-    # -----------------
     menu = ["Inicio", "Minutas y Planificación", "Actividades Docentes", "Actividades Estudiantes", "Seguimiento de Avances", "Contacto Interno"]
     choice = st.sidebar.radio("Ir a:", menu)
 
-    # -----------------
-    # Páginas principales
-    # -----------------
     if choice == "Inicio":
         st.title("Cátedra de Macro Básica")
         st.write("Bienvenida a la plataforma colaborativa de la Cátedra.")
-        st.info("\n\n✨ Próxima reunión: 12 de mayo\n\n")
-
+        st.info("✨ Próxima reunión: 12 de mayo")
     elif choice == "Minutas y Planificación":
         st.title("Minutas de Reunión y Planificación")
-        st.write("Aquí se cargarán las actas de reuniones y documentos de trabajo.")
-
     elif choice == "Actividades Docentes":
         st.title("Actividades Asignadas a Docentes")
-        st.write("Checklist de tareas pendientes por unidad y actividades de planificación.")
-
     elif choice == "Actividades Estudiantes":
         st.title("Actividades para Estudiantes")
-        st.write("Tableros interactivos, actividades de IA y Python.")
-
     elif choice == "Seguimiento de Avances":
         st.title("Seguimiento de Avances")
-        st.write("Visualización de progreso en tareas y actividades.")
-
     elif choice == "Contacto Interno":
         st.title("Contacto Interno")
         with st.form("form_contact"):
