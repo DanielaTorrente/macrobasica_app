@@ -2,16 +2,16 @@
 import streamlit as st
 import streamlit_authenticator as stauth
 
-# Configuración de usuarios
+# Configuración de usuarios (ya con contraseñas hasheadas)
 credentials = {
     "usernames": {
         "dtorrente": {
             "name": "Daniela Torrente",
-            "password": stauth.Hasher(["macro2025"]).generate()[0]
+            "password": "$2b$12$8Sk9g1O./B7Vh4ZwQMY5..8Vx3YzAFDh5U51iwmPCA9IAoHgUydlG"
         },
         "profesor1": {
             "name": "Profesor/a 1",
-            "password": stauth.Hasher(["macro2025"]).generate()[0]
+            "password": "$2b$12$8Sk9g1O./B7Vh4ZwQMY5..8Vx3YzAFDh5U51iwmPCA9IAoHgUydlG"
         }
     }
 }
