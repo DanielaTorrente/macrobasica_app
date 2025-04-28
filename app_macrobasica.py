@@ -20,15 +20,17 @@ authenticator = stauth.Authenticate(
     credentials=credentials,
     cookie_name="macrobasica_app",
     key="abcdef",
-    cookie_expiry_days=1
+    cookie_expiry_days=1,
+    preauthorized=True  # <- Agregado para que funcione correctamente
 )
 
-# Login corregido
+# Login
 authenticator.login(
     location="main",
     fields={"Form name": "Login", "Username": "Username", "Password": "Password"}
 )
 
+# Control de acceso
 if st.session_state["authentication_status"]:
     authenticator.logout(location="sidebar")
     st.sidebar.title(f"Bienvenido/a, {st.session_state['name']}")
