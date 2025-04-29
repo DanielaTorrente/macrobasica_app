@@ -1,20 +1,34 @@
-elif choice == "Minutas y Planificación":
-    st.title("📚 Minutas de Reunión y Planificación")
-    st.markdown("### 📝 Actas disponibles")
 
-    minutas = {
-        "Reunión 28 de abril de 2025": "Minuta_Reunion_Abril28.md",
-    }
+# 📚 Minuta de Reunión - 28 de Abril 2025
 
-    for nombre, archivo in minutas.items():
-        st.subheader(f"🗂 {nombre}")
-        url = f"https://raw.githubusercontent.com/DanielaTorrente/macrobasica_app/main/minutas/{archivo}"
-        try:
-            response = requests.get(url)
-            if response.status_code == 200:
-                st.markdown(response.text, unsafe_allow_html=True)
-            else:
-                st.error(f"No se pudo cargar la minuta {nombre}.")
-        except:
-            st.error(f"Error cargando la minuta {nombre}.")
-        st.markdown("---")
+---
+
+## 🧠 Temas Tratados
+
+- Disparidad en criterios de corrección.
+- Evaluación de la modalidad del examen final.
+- Planificación del dictado 2025 y uso del aula virtual.
+
+---
+
+## 🤝 Acuerdos Alcanzados
+
+- Unificación de criterios de corrección.
+- Uso de rúbricas de evaluación.
+- Redefinición de metodología para exámenes finales.
+- Incorporación de actividades de IA y Python.
+
+---
+
+## 🚀 Próximos Pasos
+
+- Enviar actas corregidas a Enrique.
+- Cargar actividades IA/Python para validación.
+- Propuesta de limpieza de aula virtual.
+- Confirmar responsables de unidades.
+
+---
+
+## 📅 Próxima reunión
+
+**Lunes 12 de Mayo 2025**
