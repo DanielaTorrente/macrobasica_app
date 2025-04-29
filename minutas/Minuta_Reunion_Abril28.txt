@@ -1,0 +1,32 @@
+Minuta de Reunión - Cátedra de Macroeconomía Básica
+Fecha: 28 de abril de 2025
+Modalidad: Virtual
+Coordinación: Daniela Torrente
+Participantes: Profesores/as adjuntos, auxiliares, titulares de práctico y teóricos/as
+Temas tratados:
+- Incorporación de actividades virtuales interactivas (tableros, ejercicios con Python/IA).
+- Uso de inteligencia artificial como herramienta de apoyo (ChatGPT, Canvas, etc.).
+- Discusión sobre modalidad de exámenes: diferenciación para regulares y promocionales.
+- Revisión del aula virtual y propuesta de limpieza y reorganización.
+- Análisis de resultados de encuestas docentes en el SIU.
+- Propuesta de taller interno: exposición breve fundamentada sobre situación económica actual.
+- Necesidad de revisar planificación de clases para definir tiempo, modalidad (presencial, sincrónica, asincrónica) y actividades de cada unidad.
+Acuerdos alcanzados:
+- Trabajar actividades de IA y Python como apoyo voluntario para estudiantes.
+- Incorporar una actividad de análisis macroeconómico actual en formato de taller.
+- Redefinir estructura de las clases 2025: qué dar de forma presencial, virtual sincrónica y asincrónica.
+- Dividir la limpieza del aula virtual entre todos los docentes.
+- Proponer alternativas para adaptar la evaluación a regulares y promocionales.
+- Revisar alternativas para mejorar la recolección de encuestas de opinión estudiantil.
+- Armar planilla de responsables para actividades nuevas y para la reestructuración del aula.
+Pendientes:
+Tema	Acción	Responsable/s	Plazo
+Revisión de actas	Enviar actas corregidas a Enrique	Profesores de práctico	Antes del próximo encuentro
+Propuesta de actividades IA	Diseñar 2-3 actividades prácticas con IA	Adolfo y Ataliba	Encuentro 2 de mayo
+Planificación de clases 2025	Definir qué se dicta presencial, virtual sincrónica y asincrónica	Profesores de teoría	Encuentro 2 de mayo
+Limpieza del aula virtual	Asignar docentes para limpiar unidades	Todos los docentes	Encuentro 2 de mayo
+Organización del taller macroeconómico	Confirmar temas y asignar moderador	Coordinación y todos los docentes	Encuentro 2 de mayo
+Propuesta de alternativa evaluativa	Esbozar esquema de evaluación diferenciada para regulares y promocionales	Coordinación y equipo de evaluación	Encuentro 2 de mayo
+Revisión de encuestas	Analizar comentarios útiles de encuestas SIU	Coordinación	Encuentro 2 de mayo
+Pedido de aula nueva	Solicitar apertura de aula 2025	Coordinación (Daniela)	Antes del próximo encuentro
+
