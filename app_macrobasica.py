@@ -2,15 +2,11 @@ import streamlit as st
 import streamlit_authenticator as stauth
 import requests
 
-# Configuración de usuarios
+# Configuración de usuarios (usuario único "profesdemacro")
 credentials = {
     "usernames": {
-        "dtorrente": {
-            "name": "Daniela Torrente",
-            "password": "macro2025"
-        },
-        "profesor1": {
-            "name": "Profesor/a 1",
+        "profesdemacro": {
+            "name": "Equipo Docente de Macro Básica",
             "password": "macro2025"
         }
     }
@@ -40,7 +36,15 @@ if st.session_state["authentication_status"]:
 
     if choice == "Inicio":
         st.title("Cátedra de Macro Básica")
-        st.write("Bienvenida a la plataforma colaborativa de la Cátedra.")
+
+        # Mostrar los dos logos
+        col1, col2 = st.columns(2)
+        with col1:
+            st.image("https://raw.githubusercontent.com/DanielaTorrente/macrobasica_app/main/images/logo_facultad.png", width=200)
+        with col2:
+            st.image("https://raw.githubusercontent.com/DanielaTorrente/macrobasica_app/main/images/logo_macrobasica.png", width=200)
+
+        st.write("Bienvenida a la plataforma colaborativa de la Cátedra de Macroeconomía Básica.")
 
     elif choice == "Minutas y Planificación":
         st.title("📚 Minutas de Reunión y Planificación")
@@ -93,7 +97,7 @@ if st.session_state["authentication_status"]:
         st.write("**Hora:** 18:00 hs")
         st.write("**Modalidad:** Virtual (Google Meet)")
         
-        meet_link = "https://meet.google.com/xxx-yyyy-zzz"  # 👈 Cambiar cuando tengas el link real
+        meet_link = "https://meet.google.com/xxx-yyyy-zzz"  # Cambiar por el link real
         st.markdown(f"[🔗 Acceder al encuentro]({meet_link})", unsafe_allow_html=True)
 
     elif choice == "Contacto Interno":
