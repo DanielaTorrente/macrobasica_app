@@ -49,6 +49,7 @@ if st.session_state["authentication_status"]:
 
         minutas = {
             "Reunión 28 de abril de 2025": "Minuta_Reunion_Abril28.docx",
+            # Podrías agregar más archivos aquí si querés
         }
 
         for nombre, archivo in minutas.items():
@@ -83,3 +84,4 @@ elif st.session_state["authentication_status"] is False:
 
 elif st.session_state["authentication_status"] is None:
     st.warning("Por favor ingrese su usuario y contraseña.")
+
