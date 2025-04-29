@@ -35,7 +35,7 @@ if st.session_state["authentication_status"]:
     authenticator.logout(location="sidebar")
     st.sidebar.title(f"Bienvenido/a, {st.session_state['name']}")
 
-    menu = ["Inicio", "Minutas y Planificación", "Actividades Docentes", "Actividades Estudiantes", "Seguimiento de Avances", "Contacto Interno"]
+    menu = ["Inicio", "Minutas y Planificación", "Actividades Docentes", "Actividades Estudiantes", "Seguimiento de Avances", "Próximos Encuentros", "Contacto Interno"]
     choice = st.sidebar.radio("Ir a:", menu)
 
     if choice == "Inicio":
@@ -68,12 +68,33 @@ if st.session_state["authentication_status"]:
         st.write("Checklist de tareas pendientes por unidad y planificación.")
 
     elif choice == "Actividades Estudiantes":
-        st.title("Actividades para Estudiantes")
-        st.write("Tableros interactivos, actividades de IA y Python.")
+        st.title("🎯 Actividades para Estudiantes")
+        st.markdown("Explorá las simulaciones, tableros y ejercicios interactivos:")
+
+        actividades = {
+            "Tablero Interactivo para Estudiantes": "https://macroeconomiabasica-gg5zwuzusagqebzwto4pih.streamlit.app/",
+            "Simulador Macroeconómico Interactivo": "https://macroeconomiabasica-6aw6qthnbfp2x69drypgkw.streamlit.app/"
+        }
+
+        for nombre, url in actividades.items():
+            st.subheader(f"🧩 {nombre}")
+            st.markdown(f"[🚀 Acceder a la actividad]({url})", unsafe_allow_html=True)
+            st.markdown("---")
 
     elif choice == "Seguimiento de Avances":
         st.title("Seguimiento de Avances")
         st.write("Visualización de progreso de actividades y minutas.")
+
+    elif choice == "Próximos Encuentros":
+        st.title("📅 Próximos Encuentros de la Cátedra")
+        
+        st.subheader("🧠 Reunión General - Mayo 2025")
+        st.write("**Fecha:** Lunes 12 de mayo de 2025")
+        st.write("**Hora:** 18:00 hs")
+        st.write("**Modalidad:** Virtual (Google Meet)")
+        
+        meet_link = "https://meet.google.com/xxx-yyyy-zzz"  # 👈 Cambiar cuando tengas el link real
+        st.markdown(f"[🔗 Acceder al encuentro]({meet_link})", unsafe_allow_html=True)
 
     elif choice == "Contacto Interno":
         st.title("Contacto Interno")
