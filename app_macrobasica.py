@@ -161,4 +161,3 @@ elif st.session_state["authentication_status"] is False:
 
 elif st.session_state["authentication_status"] is None:
     st.warning("Por favor ingrese su usuario y contraseña.")
-``
