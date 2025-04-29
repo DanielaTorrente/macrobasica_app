@@ -2,7 +2,7 @@ import streamlit as st
 import streamlit_authenticator as stauth
 import requests
 
-# Configuración de usuarios (usuario único "profesdemacro")
+# Configuración de usuarios (usuario único profesdemacro)
 credentials = {
     "usernames": {
         "profesdemacro": {
@@ -31,21 +31,33 @@ if st.session_state["authentication_status"]:
     authenticator.logout(location="sidebar")
     st.sidebar.title(f"Bienvenido/a, {st.session_state['name']}")
 
-    menu = ["Inicio", "Minutas y Planificación", "Actividades Docentes", "Actividades Estudiantes", "Seguimiento de Avances", "Próximos Encuentros", "Contacto Interno"]
+    # Menú lateral
+    menu = [
+        "Inicio", 
+        "Minutas y Planificación", 
+        "Actividades Docentes", 
+        "Actividades Estudiantes", 
+        "Seguimiento de Avances", 
+        "Próximos Encuentros", 
+        "Contacto Interno"
+    ]
     choice = st.sidebar.radio("Ir a:", menu)
 
+    # Sección: Inicio
     if choice == "Inicio":
         st.title("Cátedra de Macro Básica")
 
-        # Mostrar los dos logos
-        col1, col2 = st.columns(2)
+        col1, col2, col3 = st.columns(3)
         with col1:
-            st.image("https://raw.githubusercontent.com/DanielaTorrente/macrobasica_app/main/images/logo_facultad.png", width=200)
+            st.image("https://raw.githubusercontent.com/DanielaTorrente/macrobasica_app/main/images/logo_unne.png", width=150)
         with col2:
-            st.image("https://raw.githubusercontent.com/DanielaTorrente/macrobasica_app/main/images/logo_macrobasica.png", width=200)
+            st.image("https://raw.githubusercontent.com/DanielaTorrente/macrobasica_app/main/images/logo_fce.png", width=150)
+        with col3:
+            st.image("https://raw.githubusercontent.com/DanielaTorrente/macrobasica_app/main/images/logo_macro.png", width=150)
 
         st.write("Bienvenida a la plataforma colaborativa de la Cátedra de Macroeconomía Básica.")
 
+    # Sección: Minutas
     elif choice == "Minutas y Planificación":
         st.title("📚 Minutas de Reunión y Planificación")
         st.markdown("### 📝 Actas disponibles")
@@ -67,10 +79,12 @@ if st.session_state["authentication_status"]:
                 st.error(f"Error cargando la minuta {nombre}.")
             st.markdown("---")
 
+    # Sección: Actividades Docentes
     elif choice == "Actividades Docentes":
-        st.title("Actividades Asignadas a Docentes")
+        st.title("🧑‍🏫 Actividades Asignadas a Docentes")
         st.write("Checklist de tareas pendientes por unidad y planificación.")
 
+    # Sección: Actividades Estudiantes
     elif choice == "Actividades Estudiantes":
         st.title("🎯 Actividades para Estudiantes")
         st.markdown("Explorá las simulaciones, tableros y ejercicios interactivos:")
@@ -85,10 +99,12 @@ if st.session_state["authentication_status"]:
             st.markdown(f"[🚀 Acceder a la actividad]({url})", unsafe_allow_html=True)
             st.markdown("---")
 
+    # Sección: Seguimiento de Avances
     elif choice == "Seguimiento de Avances":
-        st.title("Seguimiento de Avances")
-        st.write("Visualización de progreso de actividades y minutas.")
+        st.title("📈 Seguimiento de Avances")
+        st.write("Visualización de progreso de actividades, minutas y tareas docentes.")
 
+    # Sección: Próximos Encuentros
     elif choice == "Próximos Encuentros":
         st.title("📅 Próximos Encuentros de la Cátedra")
         
@@ -96,19 +112,33 @@ if st.session_state["authentication_status"]:
         st.write("**Fecha:** Lunes 12 de mayo de 2025")
         st.write("**Hora:** 18:00 hs")
         st.write("**Modalidad:** Virtual (Google Meet)")
-        
+
         meet_link = "https://meet.google.com/xxx-yyyy-zzz"  # Cambiar por el link real
         st.markdown(f"[🔗 Acceder al encuentro]({meet_link})", unsafe_allow_html=True)
 
+    # Sección: Contacto Interno (redirección a WhatsApp)
     elif choice == "Contacto Interno":
-        st.title("Contacto Interno")
-        with st.form("form_contact"):
-            asunto = st.text_input("Asunto")
-            mensaje = st.text_area("Mensaje")
-            enviar = st.form_submit_button("Enviar consulta")
-            if enviar:
-                st.success("Consulta enviada. ¡Gracias!")
+        st.title("📩 Contacto Interno")
 
+        st.markdown("Complete su consulta y será derivada automáticamente al grupo de WhatsApp *Macro 1* de la cátedra.")
+
+        with st.form("form_contact"):
+            nombre = st.text_input("Nombre")
+            mensaje = st.text_area("Mensaje")
+            enviar = st.form_submit_button("Enviar al WhatsApp")
+
+            if enviar:
+                if nombre and mensaje:
+                    numero_whatsapp = "5493624314865"
+                    texto = f"Hola, soy {nombre}, docente de Macro 1. Mi consulta es: {mensaje}"
+                    texto_encoded = texto.replace(' ', '%20').replace('\n', '%0A')
+                    url_whatsapp = f"https://api.whatsapp.com/send?phone={numero_whatsapp}&text={texto_encoded}"
+                    st.success("Redirigiendo a WhatsApp...")
+                    st.markdown(f"[👉 Click aquí para enviar tu consulta por WhatsApp]({url_whatsapp})", unsafe_allow_html=True)
+                else:
+                    st.error("Por favor complete su nombre y su mensaje.")
+
+# Si no está logueado correctamente
 elif st.session_state["authentication_status"] is False:
     st.error("Usuario o contraseña incorrectos.")
 
