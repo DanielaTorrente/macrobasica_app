@@ -1,5 +1,6 @@
 import streamlit as st
 import streamlit_authenticator as stauth
+import requests
 
 # Configuración de usuarios
 credentials = {
@@ -45,18 +46,22 @@ if st.session_state["authentication_status"]:
         st.title("📚 Minutas de Reunión y Planificación")
         st.markdown("### 📝 Actas disponibles")
 
-        base_url = "https://github.com/DanielaTorrente/macrobasica_app/raw/main/minutas/"
-
         minutas = {
-            "Reunión 28 de abril de 2025": "Minuta_Reunion_Abril28.docx",
-            # Podrías agregar más archivos aquí si querés
+            "Reunión 28 de abril de 2025": "Minuta_Reunion_Abril28.txt",
         }
 
         for nombre, archivo in minutas.items():
-            with st.container():
-                st.subheader(f"🗂 {nombre}")
-                st.markdown(f"[📥 Descargar minuta]({base_url}{archivo})", unsafe_allow_html=True)
-                st.markdown("---")
+            st.subheader(f"🗂 {nombre}")
+            url = f"https://raw.githubusercontent.com/DanielaTorrente/macrobasica_app/main/minutas/{archivo}"
+            try:
+                response = requests.get(url)
+                if response.status_code == 200:
+                    st.markdown(response.text)
+                else:
+                    st.error(f"No se pudo cargar la minuta {nombre}.")
+            except:
+                st.error(f"Error cargando la minuta {nombre}.")
+            st.markdown("---")
 
     elif choice == "Actividades Docentes":
         st.title("Actividades Asignadas a Docentes")
@@ -84,4 +89,3 @@ elif st.session_state["authentication_status"] is False:
 
 elif st.session_state["authentication_status"] is None:
     st.warning("Por favor ingrese su usuario y contraseña.")
-
