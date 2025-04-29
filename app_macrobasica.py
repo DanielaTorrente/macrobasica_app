@@ -47,7 +47,7 @@ if st.session_state["authentication_status"]:
         st.markdown("### 📝 Actas disponibles")
 
         minutas = {
-            "Reunión 28 de abril de 2025": "Minuta_Reunion_Abril28.txt",
+            "Reunión 28 de abril de 2025": "Minuta_Reunion_Abril28.md",
         }
 
         for nombre, archivo in minutas.items():
@@ -56,7 +56,7 @@ if st.session_state["authentication_status"]:
             try:
                 response = requests.get(url)
                 if response.status_code == 200:
-                    st.markdown(response.text)
+                    st.markdown(response.text, unsafe_allow_html=True)
                 else:
                     st.error(f"No se pudo cargar la minuta {nombre}.")
             except:
